@@ -83,6 +83,10 @@ audio_paths=[".assets/dog_audio.wav", ".assets/car_audio.wav", ".assets/bird_aud
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 # Instantiate model
+# NOTE: This downloads the imagebind_huge model if it does not already exists.
+# This download process has proven tempermental.
+# If download fails or errors arise, consider downloading the imagebind_huge model manually to ".checkpoints/imagebind_huge.pth"
+# (See checkpoint linked in table above.)
 model = imagebind_model.imagebind_huge(pretrained=True)
 model.eval()
 model.to(device)
